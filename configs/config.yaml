@@ -20,6 +20,6 @@ plots:
   ROC: roc.json
 
 source_data:
-  URL : https://github.com/
+ 
   data_dir: data
   data_file: data.xml
