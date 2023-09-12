@@ -1,5 +1,5 @@
 # Project information
-site_name: REPO_NAME_OR_SITE_NAME
+site_name: DVC-NLP-Project
 # defeine TOC or order of website-
 nav:
   - Home: index.md
@@ -9,8 +9,8 @@ site_description: >-
   DESCRIPTION
 
 # Repository
-repo_name: c17hawke/REPO_NAME
-repo_url: https://github.com/c17hawke/REPO_NAME
+repo_name: JotiRoy01/DVC-NLP-Project
+repo_url: https://github.com/JotiRoy01/DVC-NLP-Project
 
 # Configuration
 theme:
@@ -39,7 +39,7 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github-alt
-      link: https://github.com/c17hawke
+      link: https://github.com/JotiRoy01
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/c17hawke
     - icon: fontawesome/brands/linkedin
@@ -71,4 +71,4 @@ plugins:
   - search
 
 copyright: |
-  &copy; 2022 <a href="https://github.com/c17hawke"  target="_blank" rel="noopener">Sunny Bhaveen Chandra</a>
+  &copy; 2022 <a href="https://github.com/JotiRoy01"  target="_blank" rel="noopener">Joti Roy</a>
