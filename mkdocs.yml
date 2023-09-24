@@ -4,8 +4,9 @@ site_name: DVC-NLP-Project
 nav:
   - Home: index.md
   - Data-prep-stage: data_prep.md
+  - feturization: featurization.md
 
-site_author: Sunny Bhaveen Chandra
+site_author: Joti Roy
 site_description: >-
   DESCRIPTION
 
