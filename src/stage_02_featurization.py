@@ -4,7 +4,8 @@ import os
 import shutil
 from tqdm import tqdm
 import logging
-from src.utils.common import read_yaml, create_directories , get_df
+from utils.common import read_yaml, create_directories , get_df
+from utils.data_mgmt import save_matrix
 import random
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 
@@ -39,8 +40,8 @@ def main(config_path, params_path):
 
     # For Train Data
 
-    def_train = get_df(train_data_path)
-    train_words = np.array(def_train.text.str.lower().values.astype("U"))
+    df_train = get_df(train_data_path)
+    train_words = np.array(df_train.text.str.lower().values.astype("U"))
 
     bag_of_words = CountVectorizer(
         stop_words="english",
@@ -48,7 +49,7 @@ def main(config_path, params_path):
         ngram_range=(1, n_grams)
     )
 
-    bag_of_words.fig(train_words)
+    bag_of_words.fit(train_words)
     train_words_binary_matrix = bag_of_words.transform(train_words)
 
     tfidf = TfidfTransformer(smooth_idf=False)
@@ -56,6 +57,7 @@ def main(config_path, params_path):
     train_words_tfidf_matrix = tfidf.transform(train_words_binary_matrix)
 
     # Call a function to save this matrix
+    save_matrix(df=df_train, matrix=train_words_tfidf_matrix, out_path=featurized_train_data_path)
 
     # For Test Data
 
@@ -63,6 +65,7 @@ def main(config_path, params_path):
     test_words = np.array(df_test.text.str.lower().values.astype("U"))
     test_words_binary_matrix = bag_of_words.transform(test_words)
     test_words_tfidf_matrix = tfidf.transform(test_words_binary_matrix)
+    save_matrix(df=df_test, matrix=test_words_tfidf_matrix, out_path=featurized_test_data_path)
 
 
 if __name__ == '__main__':
