@@ -43,8 +43,46 @@ def main(config_path, params_path):
     labels = np.squeeze(matrix[:,1].toarray())
     X = matrix[:, 2:]
 
-    prediction_by_class = model.predict_proba(X)
-    print(prediction_by_class)
+    predictions = model.predict(X)
+
+    PRC_json_path = config["plots"]["PRC"]
+    ROC_json_path = config["plots"]["ROC"]
+    score_json_path = config["metrics"]["SCORES"]
+
+    avg_prec = metrics.average_precision_score(labels , predictions)
+    roc_auc = metrics.roc_auc_score(labels, predictions)
+
+    score = {
+        "avg_prec":avg_prec,
+        "roc_auc":roc_auc
+    }
+
+    save_json(score_json_path , score)
+
+    precision , recall , prc_threshold = metrics.precision_recall_curve(labels, predictions)
+
+    nth_points = math.ceil(len(prc_threshold)/1000)
+    prc_points = list(zip(precision, recall,prc_threshold))[::nth_points]
+
+    prc_data = {
+        "prc":[
+            {"precision": p , "recall":r,"threshold":t}
+            for p,r ,t in prc_points
+        ]
+    }
+
+    save_json(PRC_json_path,prc_data)
+
+    fpr,tpr,roc_threshold = metrics.roc_curve(labels, predictions)
+
+    roc_data = {
+        "roc":[
+            {"fpr":fp,"tpr":tp,"threshold":t}
+            for fp,tp,t in  zip(fpr,tpr,roc_threshold)
+        ]
+    }
+    save_json(ROC_json_path,roc_data)
+    
 
 
 if __name__ == '__main__':
