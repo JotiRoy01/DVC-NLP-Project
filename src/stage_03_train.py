@@ -37,7 +37,7 @@ def main(config_path, params_path):
 
     matrix = joblib.load(featurized_train_data_path)
     labels = np.squeeze(matrix[:,1].toarray())
-    X = matrix[:,2]
+    X = matrix[:,2:]
 
     logging.info(f"input matrix size : {matrix.shape}")
     logging.info(f"X matrix size : {X.shape}")
