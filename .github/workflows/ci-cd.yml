@@ -20,14 +20,8 @@ jobs:
                 pip install --upgrade pip
                 pip install -r requirements.txt
                 dvc repro -v
-                echo "# REPORT" >> report.md
+                echo "# REPORTS" >> report.md
                 echo "## metrics" >> report.md
                 cat scores.json >> report.md
                 cml-send-comment report.md
-                #python train.py  # generate plot.png
-        
-                # Create CML report
-                #cat metrics.txt >> report.md
-                #echo '![](./plot.png "Confusion Matrix")' >> report.md
-                #cml comment create report.md
-              
+                
