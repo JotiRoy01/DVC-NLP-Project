@@ -1,0 +1,33 @@
+name: DVC-project
+on: [push]
+jobs:
+    run:
+    #train-and-report:
+        runs-on: ubuntu-latest
+    #container: docker://ghcr.io/iterative/cml:0-dvc2-base1
+        steps:
+          - uses: actions/checkout@v3
+          - uses: iterative/setup-cml@v1
+          - uses: actions/setup-python@v2
+            with:
+             python-version: "3.8"
+
+          - name: cml-run
+            env :
+              repo_token: ${{ secrets._GITHUB_TOKEN }}
+            run: |
+                # Your ML workflow commands
+                pip install --upgrade pip
+                pip install -r requirements.txt
+                dvc repro -v
+                echo "# REPORT" >> report.md
+                echo "## metrics" >> report.md
+                cat scores.json >> report.md
+                cml-send-comment report.md
+                #python train.py  # generate plot.png
+        
+                # Create CML report
+                #cat metrics.txt >> report.md
+                #echo '![](./plot.png "Confusion Matrix")' >> report.md
+                #cml comment create report.md
+              
