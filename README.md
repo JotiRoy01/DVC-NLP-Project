@@ -30,5 +30,10 @@ pip install -r requirements.txt
 ```bash
 dvc init
 ```
+### STEP 06- run dvc project
+```bash
+dvc repro 
+or dvc repro --force
+```
 
 ### STEP 06- commit and push the changes to the remote repository

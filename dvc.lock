@@ -64,7 +64,7 @@ stages:
     outs:
     - path: artifacts/model/model.pkl
       hash: md5
-      md5: 8fc936005f378bf4ca91b2bf0baca882
+      md5: fd7da59bb6dd47334c2fecb887118b20
       size: 3481753
   evaluate:
     cmd: python src/stage_04_evaluate.py
@@ -75,12 +75,12 @@ stages:
       size: 3713900
     - path: artifacts/model/model.pkl
       hash: md5
-      md5: 8fc936005f378bf4ca91b2bf0baca882
+      md5: fd7da59bb6dd47334c2fecb887118b20
       size: 3481753
     - path: src/stage_04_evaluate.py
       hash: md5
-      md5: 6517b752d620757ebcbcaa6ccb6391c0
-      size: 2958
+      md5: e1af33d8de4ce02c7b1d302a546a7b5f
+      size: 3220
     - path: src/utils
       hash: md5
       md5: cc70f77c58a2b29fa16a80be54e09eb9.dir
@@ -89,13 +89,13 @@ stages:
     outs:
     - path: prc.json
       hash: md5
-      md5: 885ecb39468d7ab6dd96f148bb294b41
-      size: 296
+      md5: bb6437814f67324a73de32209eb4ec2b
+      size: 146509
     - path: roc.json
       hash: md5
-      md5: 248824dbc5b054e02b166d44120bcfba
-      size: 373
+      md5: 1109475f15b310bfb0d14ba307554675
+      size: 135531
     - path: scores.json
       hash: md5
-      md5: 2ad47e4727e04d75d2060d319f4e3a2f
-      size: 77
+      md5: 663066b8bc4dd4882570a070a23be93c
+      size: 75
